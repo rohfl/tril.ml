@@ -40,8 +40,13 @@ app.get('/404', (req, res) => {
 });
 
 app.get('/about',(req,res) => {
-    console.log("Hello")
+    console.log("Hello About")
     res.render('about')
+})
+
+app.get('/api',(req,res) => {
+    console.log("Hello API")
+    res.render('api')
 })
 
 app.get('/favicon.ico', (req, res) => {
