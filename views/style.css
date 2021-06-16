@@ -1,0 +1,98 @@
+body{
+    margin: 0px;
+    font-family: 'Roboto';
+    background-color: whitesmoke;
+}
+
+.form{
+    background-color: whitesmoke;
+    text-align: center;
+    padding-top: 10%;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 10%;
+}
+  
+  #url, #customurl{
+    padding: 10px;
+    font-size: 16px;
+    color: #071b3b;
+    width: 50%;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #173058;
+    outline: none;
+    background: transparent;
+  }
+
+  #submit {
+    background: #3e64ff;
+    border: 2px solid #3e64ff;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    
+  }
+  button{
+    min-width: 100px;
+  }
+
+  #copy {
+    background: #04AA6D;
+    border: 2px solid #147c51;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  #submit:hover {
+    
+    background: #bfc5c5;
+    border: 2px solid #3e64ff;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    
+  }
+
+  #copy:hover{
+    
+    background: #81d6af;
+    border: 2px solid #147c51;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    
+  }
+
+  #submit:disabled{
+    
+    background: #969797;
+    border: 2px solid #3e64ff;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    color: #fff;
+    cursor: not-allowed;
+    padding: 11px 16px;
+  }
+
+  .output{
+
+    background-color: #d5dbda;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+
+  }
+
+  .error{
+    
+    color: red;
+  }
+
+
+  

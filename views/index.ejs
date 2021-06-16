@@ -4,15 +4,101 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Document</title>
 </head>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#urlform').submit(function (event) {
+            event.preventDefault();
+            $('.output').css('display', "none");
+            $('.error').css('display', "none");
+            $('#submit').prop('disabled', true);
+            $("#submit").empty().text("Loading...");
+            var posting = $.post("/checkurl", {
+                longurl: $("#url").val(),
+                customurl: $("#customurl").val(),
+            });
+
+
+            posting.done(function (data) {
+                console.log(data);
+                $('.output').css('display', "inline-block");
+                $('#output').val('http://localhost:5000/' + data.customurl);
+                $('#hidden').text(' http://localhost:5000/' + data.customurl);
+                $("#submit").empty().text("Submit");
+                $('#submit').prop('disabled', false);
+            });
+
+
+            posting.fail(function (data) {
+                console.log(data);
+                $('.error').css('display', "block");
+                $('#error').text(data.responseJSON.response);
+                $("#submit").empty().text("Submit");
+                $('#submit').prop('disabled', false);
+            });
+
+
+            return false;
+        });
+    });
+
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+
+</script>
+
 <body>
-    <div class="formContainer">
-        <form id="urlform" action="/process" method='POST'>
-            <input type="url" id="url" placeholder="Enter long url" name="longurl" required="true"><br>
-            <input type="text" id="customurl" placeholder="Enter Custom if you want." name="customurl"><br>
-            <button type="submit" id="submit">Submit</button>
-        </form>
+
+    <div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="/">tril.ml</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/about">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+              </ul>
+            </div>
+          </nav>
     </div>
+
+    <div class="form">
+
+            <form id="urlform" action="/checkurl" method='POST'>
+                <input type="url" id="url" placeholder="Enter Url" name="longurl" required><br>
+                <input type="text" id="customurl" placeholder="Custom" name="custom"><br>
+                <button type="submit" id="submit">Submit</button>
+            </form>
+    
+            <div class="error">
+                <p id="error"></p>
+            </div>
+            <div class="output">
+                <input readonly type="url" id="output">
+                <button onclick="copyToClipboard('#hidden')" id="copy">Copy</button>
+            </div>
+            <p hidden id="hidden"></p>
+    
+    </div>
+
+
 </body>
 </html>
