@@ -1,18 +1,22 @@
+html {
+  height: 100%;
+  background-color: whitesmoke;
+  font-family: 'Roboto';
+}
+
 body{
     margin: 0px;
-    font-family: 'Roboto';
-    background-color: whitesmoke;
+    padding-top: 50px;
+    /* min-height: 100%; */
+    background-color: whitesmoke !important;
 }
 
 .form{
     background-color: whitesmoke;
     text-align: center;
-    padding-top: 10%;
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-bottom: 10%;
+    padding: 10%;
 }
-  
+
   #url, #customurl{
     padding: 10px;
     font-size: 16px;
@@ -94,5 +98,27 @@ body{
     color: red;
   }
 
-
+  .navbar-brand {
+    font-family: 'Roboto';
+  }
   
+  #footer{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    display: none;
+  }
+}
