@@ -63,40 +63,45 @@
 
 <body>
 
-    <div>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="/">tril.ml</a>
-              </div>
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/about">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
-              </ul>
-            </div>
-          </nav>
-    </div>
-
-    <div class="form">
-
-            <form id="urlform" action="/checkurl" method='POST'>
-                <input type="url" id="url" placeholder="Enter Url" name="longurl" required><br>
-                <input type="text" id="customurl" placeholder="Custom" name="custom"><br>
-                <button type="submit" id="submit">Submit</button>
-            </form>
+        <div>
     
-            <div class="error">
-                <p id="error"></p>
-            </div>
-            <div class="output">
-                <input readonly type="url" id="output">
-                <button onclick="copyToClipboard('#hidden')" id="copy">Copy</button>
-            </div>
-            <p hidden id="hidden"></p>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="/">tril.ml</a>
+                  </div>
+                  <ul class="nav navbar-nav navbar-right collapsed">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/api">API</a></li>
+                  </ul>
+                </div>
+              </nav>
     
+        </div>
+    
+        <div class="form">
+    
+                <form id="urlform" action="/checkurl" method='POST'>
+                    <input type="url" id="url" placeholder="Enter Url" name="longurl" required><br>
+                    <input type="text" id="customurl" placeholder="Custom" name="custom"><br>
+                    <button type="submit" id="submit">Submit</button>
+                </form>
+        
+                <div class="error">
+                    <p id="error"></p>
+                </div>
+                <div class="output">
+                    <input readonly type="url" id="output">
+                    <button onclick="copyToClipboard('#hidden')" id="copy">Copy</button>
+                </div>
+                <p hidden id="hidden"></p>
+        
+        </div>
+    
+    <div id="footer">
+        <p>Made with &#10084 by Rohit</p>
     </div>
 
 
