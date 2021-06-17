@@ -196,6 +196,38 @@ ul {
   color: whitesmoke;
 }
 
+.maindiv {
+  font-family: 'Roboto';
+  padding-top: 10vh;
+  width: 100%;
+  padding-bottom: 10vh;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.maindiv h2{
+  margin-bottom: 10px;
+}
+
+.maindiv p{
+  padding-bottom: 10px;
+  margin:0;
+}
+
+.maindiv a{
+  display: block;
+  padding: 5px;
+  padding-left: 0;
+  /* width: 100px; */
+}
+
+.maindiv a:hover{
+  font-size: 1.6em;
+  color: rgb(80, 157, 230);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
 @media only screen and (max-device-width: 1080px) {
 
   #url, #customurl{
@@ -222,5 +254,11 @@ ul {
     width: 80%;
 
   }
+
+  .maindiv {
+    padding: 0;
+    padding-left: 3rem;
+    padding-top: 2rem;
+}
 
 }
