@@ -6,8 +6,7 @@ html {
 
 body{
     margin: 0px;
-    padding-top: 50px;
-    /* min-height: 100%; */
+    min-height: 100%;
     background-color: whitesmoke !important;
 }
 
@@ -53,7 +52,7 @@ body{
 
   #submit:hover {
     
-    background: #bfc5c5;
+    background: #5a77d6;
     border: 2px solid #3e64ff;
     border-radius: 20px;
     padding: 10px;
@@ -75,13 +74,13 @@ body{
 
   #submit:disabled{
     
-    background: #969797;
+    background: #5a77d6;
     border: 2px solid #3e64ff;
     border-radius: 20px;
     padding-bottom: 10px;
     color: #fff;
     cursor: not-allowed;
-    padding: 11px 16px;
+    padding: 10px;
   }
 
   .output{
@@ -98,7 +97,7 @@ body{
     color: red;
   }
 
-  .navbar-brand {
+  .company {
     font-family: 'Roboto';
   }
   
@@ -106,19 +105,79 @@ body{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    position: fixed;
     width: 100%;
     bottom: 0;
+    position: static;
 }
 
-@media only screen and (max-width: 1000px) {
-  body {
-    display: none;
-  }
+.nav-items {
+  list-style: none;
+  margin: 0; 
+  background: #242526;
+  display: flex;
+  flex-flow: row wrap;
+  height: fit-content;
+  justify-content: flex-end;
+  
 }
 
-@media screen and (max-width: 767px) {
-  body {
-    display: none;
+
+.nav-items a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+  height: 100%;
+}
+
+.pages:hover{
+  text-decoration: none;
+  color: white;
+  background-color: #464646;
+  
+}
+
+.company {
+  margin-right: auto;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.pages {
+  font-size: 1.5em;
+   text-align: center
+}
+
+#active {
+  background-color: #616161;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+.companyname:hover {
+  background-color: #242526;
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+@media only screen and (max-device-width: 480px) {
+  #url, #customurl{
+    padding: 10px;
+    font-size: 16px;
+    color: #071b3b;
+    width: 80%;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #173058;
+    outline: none;
+    background: transparent;
   }
+
+  button{
+    min-width: auto;
+    min-height: fit-content;
+  }
+
 }
