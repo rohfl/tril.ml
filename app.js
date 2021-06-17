@@ -20,14 +20,12 @@ app.get('/',(req,res) => {
 app.post('/checkurl',(req,res) => {
 
     longurl = req.body.longurl
-    // console.log(req.body.customurl)
     customurl = req.body.customurl.length!=0?req.body.customurl:nanoid(8)
 
     if(customurl === 'about') {
         res.status(400).json({ response: "Custom url already exists" });
     }
 
-    // res.send(customurl)\
     checkCustom(req,res,customurl,longurl)
 
 })
@@ -80,9 +78,8 @@ function checkCustom(req,res,customurl,longurl) {
         }
         else {
             db.ref("customurls/" + customurl).set(longurl)
-            // updateTotalUrls()
+            updateTotalUrls()
             res.status(200).json({ customurl: customurl});
-            // res.render('sample',{customUrl: customurl})
         }
     }).catch((error) => {
         console.error(error)
@@ -92,22 +89,10 @@ function checkCustom(req,res,customurl,longurl) {
 
 function updateTotalUrls() {
 
-    // db.ref().child("TotalUrls").get().then((snapshot) => {
-    //     if(!snapshot.exists()) {
-    //         db.ref("TotalUrls").set(1)
-    //     }
-    //     else {
-    //         var total = snapshot.val()
-    //         db.ref("TotalUrls".set(total+1))
-    //     }
-    // }).catch((error)=>{
-    //     console.error(error)
-    // })
-    
-    // db.ref("TotalUrls").transaction(function())
-    // .ref("TotalUrls")
-    // .set(db.ServerValue.increment(1))
-    // res.end
+    db.ref("TotalUrls")
+    .transaction(function(searches) {
+        return (searches || 0) + 1
+    })
 
 
 }
