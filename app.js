@@ -94,5 +94,4 @@ function updateTotalUrls() {
         return (searches || 0) + 1
     })
 
-
 }
