@@ -50,6 +50,7 @@ body{
     padding: 10px;
     color: #fff;
     cursor: pointer;
+    margin-top: 10px;
   }
 
   #submit:hover {
