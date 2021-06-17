@@ -202,15 +202,17 @@ ul {
   width: 100%;
   padding-bottom: 10vh;
   text-align: center;
-  font-size: 1.5em;
+  
 }
 
 .maindiv h2{
   margin-bottom: 10px;
+  font-size: 2.5em;
 }
 
 .maindiv p{
   padding-bottom: 10px;
+  font-size: 1.5em;
   margin:0;
 }
 
@@ -218,11 +220,12 @@ ul {
   display: block;
   padding: 5px;
   padding-left: 0;
+  font-size: 1.5em;
   /* width: 100px; */
 }
 
 .maindiv a:hover{
-  font-size: 1.6em;
+  font-size: 1.8em;
   color: rgb(80, 157, 230);
   cursor: pointer;
   transition: 0.2s;
