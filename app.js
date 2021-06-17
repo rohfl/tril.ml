@@ -7,14 +7,24 @@ const db = firebase.database()
 
 app.listen(process.env.PORT || 5000)
 
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/views'))
 
 app.set('view engine', 'ejs')
 
 app.use(express.urlencoded())
 
-app.get('/',(req,res) => {
-    res.render('index')
+app.get('/',async (req,res) => {
+
+    var totalurls = 0
+    await db.ref().child("TotalUrls").get().then((snapshot) => {
+        if (snapshot.exists()) {
+            totalurls = snapshot.val()
+        }
+    }).catch((error) => {
+        console.error(error)
+    })
+
+    res.render('index',{totalurls : totalurls})
 })
 
 app.post('/checkurl',(req,res) => {
@@ -23,7 +33,7 @@ app.post('/checkurl',(req,res) => {
     customurl = req.body.customurl.length!=0?req.body.customurl:nanoid(8)
 
     if(customurl === 'about') {
-        res.status(400).json({ response: "Custom url already exists" });
+        res.status(400).json({ response: "Custom url already exists" })
     }
 
     checkCustom(req,res,customurl,longurl)
@@ -33,9 +43,9 @@ app.post('/checkurl',(req,res) => {
 
 app.get('/404', (req, res) => {
     
-    res.render('404');
+    res.render('404')
     
-});
+})
 
 app.get('/about',(req,res) => {
     console.log("Hello About")
@@ -49,49 +59,58 @@ app.get('/api',(req,res) => {
 
 app.get('/favicon.ico', (req, res) => {
 
-    res.status(404).send("");
+    res.status(404).send("")
 
-});
+})
 
 app.get('/:customurl', (req, res) => {
     console.log("Hello There")
-    const customurl = req.params.customurl;
+    const customurl = req.params.customurl
 
     db.ref().child("customurls").child(customurl).get().then((snapshot) => {
         if (snapshot.exists()) {
-            res.redirect(snapshot.val());
+            res.redirect(snapshot.val())
         } else {
             res.redirect('/404')
         }
     }).catch((error) => {
-        console.error(error);
-    });
+        console.error(error)
+    })
 
-});
+})
 
 
 function checkCustom(req,res,customurl,longurl) {
 
     db.ref().child("customurls").child(customurl).get().then((snapshot) => {
         if(snapshot.exists()) {
-            res.status(400).json({ response: "Custom url already exists" });
+            res.status(400).json({ response: "Custom url already exists" })
         }
         else {
             db.ref("customurls/" + customurl).set(longurl)
-            updateTotalUrls()
-            res.status(200).json({ customurl: customurl});
+            updateTotalUrlsAndSendData(res,customurl)
+            // returnData(res,customurl)
         }
     }).catch((error) => {
+        res.status(400).json({ response: "There was some error" })
         console.error(error)
-    });
+    })
 
 }
 
-function updateTotalUrls() {
+async function updateTotalUrlsAndSendData(res,customurl) {
 
-    db.ref("TotalUrls")
+    await db.ref("TotalUrls")
     .transaction(function(searches) {
         return (searches || 0) + 1
     })
-
+    
+    await db.ref().child("TotalUrls").get().then((snapshot) => {
+        if (snapshot.exists()) {
+            totalurls = snapshot.val()
+            res.status(200).json({customurl:customurl, totalurls:totalurls})
+        }
+    }).catch((error) => {
+        console.error(error)
+    })
 }

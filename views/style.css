@@ -51,6 +51,7 @@ body{
     color: #fff;
     cursor: pointer;
     margin-top: 10px;
+
   }
 
   #submit:hover {
@@ -84,6 +85,26 @@ body{
     color: #fff;
     cursor: not-allowed;
     padding: 10px;
+
+  }
+
+  .totalmain {
+    font-family: 'Roboto';
+    margin-top: 30px;
+  }
+
+  .totalurls {
+    
+    width: fit-content;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #E9EBEE;
+  }
+
+  #totalurls {
+    margin: 0;
   }
 
   .output{
@@ -93,7 +114,14 @@ body{
     margin: 10px;
     display: none;
     margin-top: 30px;
+    width: 20%;
+    border-radius: 10px;
 
+  }
+
+  #output {
+    width: 100%;
+    text-align: center;
   }
 
   .error{
@@ -114,7 +142,7 @@ body{
     margin-right: auto;
     width: 100%;
     bottom: 0;
-    position: static;
+    position: absolute;
 }
 
 .nav-items {
@@ -127,7 +155,6 @@ body{
   justify-content: flex-end;
   
 }
-
 
 .nav-items a {
   text-decoration: none;
@@ -169,8 +196,10 @@ ul {
   color: whitesmoke;
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 1080px) {
+
   #url, #customurl{
+
     padding: 10px;
     font-size: 16px;
     color: #071b3b;
@@ -180,6 +209,18 @@ ul {
     border-bottom: 1px solid #173058;
     outline: none;
     background: transparent;
+
+  }
+
+  .output{
+
+    background-color: #d5dbda;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    margin-top: 30px;
+    width: 80%;
+
   }
 
 }
