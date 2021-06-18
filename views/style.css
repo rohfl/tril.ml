@@ -258,6 +258,13 @@ ul {
   font-family: 'Roboto';
 }
 
+.imagecontainer {
+  padding: 20%;
+  width:100%;
+  height:100%;
+  text-align: center;
+}
+
 @media only screen and (max-device-width: 1080px) {
 
   #url, #customurl{

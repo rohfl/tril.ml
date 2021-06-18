@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="icon" href="data:image/png;base64,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">
+    <title>tril.ml | URL Shortener</title>
 </head>
 <body>
-    
+
+    <nav class="nav-container">
+        <ul class="nav-items">
+            <div class="company">
+                <a href="/" class="companyname">tril.ml</a>
+            </div>
+            <li><a href="/" class="pages">home</a></li>
+
+            <li><a href="/about" class="pages">about</a></li>
+
+            <li><a href="/api" class="pages">api</a></li>
+        </ul>
+    </nav>
+
+    <div class="imagecontainer">
+        <img src="https://nsw.md.go.th/mdpilotinfo/img/jisunpark_404-error.gif" alt="404 Not Found" class="notfound">
+    </div>
 </body>
 </html>
