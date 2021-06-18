@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rohfl/urlshortener.git"
+    "url": "https://github.com/rohfl/urlshortener.git"
   },
   "author": "@rohfl",
   "license": "ISC",
