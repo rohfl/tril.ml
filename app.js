@@ -1,6 +1,7 @@
 const express = require('express')
 const firebase = require('./firebase/firebase')
 const { nanoid } = require('nanoid')
+const validUrl = require('valid-url')
 const app = express()
 const db = firebase.database()
 
@@ -63,6 +64,38 @@ app.get('/favicon.ico', (req, res) => {
 
 })
 
+app.get('/api/custom/:customurl',(req,res) => {
+
+    var recurl = req.params.customurl
+    var longurl = recurl.split('|')[0]
+    var customurl = recurl.split('|')[1]
+    if(longurl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) != null) {
+        console.log(longurl)
+        // customurl = nanoid(8)
+        apiFun(res,customurl,longurl)
+    }
+    else {
+        res.status(400).json({response : "Enter a Valid URL."})
+    }
+
+    // console.log("Hello API")
+    // res.render('api')
+})
+
+app.get('/api/:longurl',(req,res) => {
+    
+    var longurl = req.params.longurl
+
+    if(longurl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) != null) {
+        console.log(longurl)
+        customurl = nanoid(8)
+        apiFun(res,customurl,longurl)
+    }
+    else {
+        res.status(400).json({response : "Enter a Valid URL."})
+    }
+})
+
 app.get('/:customurl', (req, res) => {
     console.log("Hello There")
     const customurl = req.params.customurl
@@ -112,5 +145,30 @@ async function updateTotalUrlsAndSendData(res,customurl) {
         }
     }).catch((error) => {
         console.error(error)
+    })
+}
+
+async function apiFun(res, customurl, longurl) {
+    await db.ref().child("customurls").child(customurl).get().then((snapshot) => {
+        if(snapshot.exists()) {
+            res.status(400).json({ response: "Custom URL already exist." })
+        }
+        else {
+            db.ref("customurls/" + customurl).set(longurl)
+            res.status(200).json({customurl})
+            // returnData(res,customurl)
+            updateTotalUrls()
+        }
+    }).catch((error) => {
+        res.status(400).json({ response: "There was some error" })
+        console.error(error)
+    })
+}
+
+function updateTotalUrls() {
+
+    db.ref("TotalUrls")
+    .transaction(function(searches) {
+        return (searches || 0) + 1
     })
 }
