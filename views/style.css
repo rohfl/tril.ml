@@ -142,7 +142,7 @@ body{
     margin-right: auto;
     width: 100%;
     bottom: 0;
-    position: absolute;
+    position: static;
 }
 
 .nav-items {
@@ -246,6 +246,10 @@ ul {
   text-align: center;
 }
 
+#mobileopensource {
+  display: none;
+}
+
 .containerdiv {
   text-align: left;
   width: 60%;
@@ -289,6 +293,18 @@ ul {
     padding: 0;
     padding-left: 3rem;
     padding-top: 2rem;
-}
+  }
+
+  #sourcecode {
+    display: none;
+  }
+
+  .laptopopensource {
+    display: none;
+  }
+
+  #mobileopensource {
+    display: block;
+  }
 
 }
