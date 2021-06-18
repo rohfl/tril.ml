@@ -259,10 +259,14 @@ ul {
 }
 
 .imagecontainer {
-  padding: 20%;
   width:100%;
   height:100%;
   text-align: center;
+}
+
+.notfound {
+  pointer-events: none;
+  width: 50%;
 }
 
 @media only screen and (max-device-width: 1080px) {
@@ -296,6 +300,11 @@ ul {
     padding: 0;
     padding-left: 3rem;
     padding-top: 2rem;
+  }
+
+  .notfound {
+    pointer-events: none;
+    width: 100%;
   }
 
 }
