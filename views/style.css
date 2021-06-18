@@ -196,6 +196,11 @@ ul {
   color: whitesmoke;
 }
 
+.opensource {
+  text-align: center;
+  margin-top: 15px;
+}
+
 .maindiv {
   font-family: 'Roboto';
   padding-top: 10vh;
@@ -246,6 +251,11 @@ ul {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+}
+
+#turls {
+  display: none;
+  font-family: 'Roboto';
 }
 
 @media only screen and (max-device-width: 1080px) {

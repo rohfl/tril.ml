@@ -35,6 +35,7 @@
                     $('.output').css('display', "inline-block");
                     $('#output').val('http://localhost:5000/' + data.customurl);
                     $('#hidden').text(' http://localhost:5000/' + data.customurl);
+                    $('#totalurls').css('display','none');
                     $("#turls").css('display','block');
                     $('#turls').text(data.totalurls + ' URLs shortened till now');
                     $("#submit").empty().text("Submit");
@@ -76,8 +77,13 @@
                 <li><a href="/about" class="pages">about</a></li>
     
                 <li><a href="/api" class="pages">api</a></li>
+                <li><a href="https://www.github.com/rohfl/URLShortener" class="pages">source code</a></li>
             </ul>
         </nav>
+
+        <div class="opensource">
+            <p>An Open Source URL Shortener.</p>
+        </div>
     
         <div class="form">
     

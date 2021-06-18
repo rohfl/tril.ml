@@ -1,7 +1,6 @@
 const express = require('express')
 const firebase = require('./firebase/firebase')
 const { nanoid } = require('nanoid')
-const validUrl = require('valid-url')
 const app = express()
 const db = firebase.database()
 
@@ -49,12 +48,10 @@ app.get('/404', (req, res) => {
 })
 
 app.get('/about',(req,res) => {
-    console.log("Hello About")
     res.render('about')
 })
 
 app.get('/api',(req,res) => {
-    console.log("Hello API")
     res.render('api')
 })
 
@@ -70,16 +67,12 @@ app.get('/api/custom/:customurl',(req,res) => {
     var longurl = recurl.split('|')[0]
     var customurl = recurl.split('|')[1]
     if(longurl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) != null) {
-        console.log(longurl)
-        // customurl = nanoid(8)
+        
         apiFun(res,customurl,longurl)
     }
     else {
         res.status(400).json({response : "Enter a Valid URL."})
     }
-
-    // console.log("Hello API")
-    // res.render('api')
 })
 
 app.get('/api/:longurl',(req,res) => {
@@ -87,7 +80,7 @@ app.get('/api/:longurl',(req,res) => {
     var longurl = req.params.longurl
 
     if(longurl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) != null) {
-        console.log(longurl)
+        
         customurl = nanoid(8)
         apiFun(res,customurl,longurl)
     }
@@ -97,7 +90,6 @@ app.get('/api/:longurl',(req,res) => {
 })
 
 app.get('/:customurl', (req, res) => {
-    console.log("Hello There")
     const customurl = req.params.customurl
 
     db.ref().child("customurls").child(customurl).get().then((snapshot) => {
@@ -122,7 +114,6 @@ function checkCustom(req,res,customurl,longurl) {
         else {
             db.ref("customurls/" + customurl).set(longurl)
             updateTotalUrlsAndSendData(res,customurl)
-            // returnData(res,customurl)
         }
     }).catch((error) => {
         res.status(400).json({ response: "There was some error" })
