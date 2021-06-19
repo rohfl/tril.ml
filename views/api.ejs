@@ -38,13 +38,13 @@
     <p><b>For converting just the Long URL do the following :</b></p>
     <ul>
       <li>
-        <p>Send a <b>GET request </b>at https://localhost:5000/api/longurl</p>
+        <p>https://trilml.herokuapp.com/api/longurl sends shortId for the longurl.</p>
       </li>
       <li>
         <p>Replace longurl with the URL you want to convert.</p>
       </li>
       <li>
-        <p>Sample request : https://localhost:5000/api/www.google.com.</p>
+        <p>Sample : https://trilml.herokuapp.com/api/www.google.com.</p>
       </li>
       <li>
         <p>Response : {"customurl":"Cy91RT16"}</p>
@@ -52,17 +52,20 @@
     </ul>
   </div>
   <div class="containerdiv">
-    <p><b>For converting just the Long URL with a custom shortcode do the following :</b></p>
+    <p><b>For converting the Long URL with a custom shortcode do the following :</b></p>
 
     <ul>
       <li>
-        <p>Send a <b>GET request </b> at https://localhost:5000/api/custom/longurl%OKOKOK%customurl</p>
+        <p>https://trilml.herokuapp.com/api/custom/longurl|customurl sends the customId for the longurl provided or will show error if the short id is already in db.</p>
       </li>
       <li>
         <p>Replace longurl with the URL you want to convert and cutomurl with the custom id.</p>
       </li>
       <li>
-        <p>Sample for custom id request : https://localhost:5000/api/custom/www.facebook.com%OKOKOK%sjdbfsh.</p>
+        <p>Sample : https://trilml.herokuapp.com/api/custom/www.facebook.com|sjdbfsh.</p>
+      </li>
+      <li>
+        <p>Response : {"customurl":customurl}</p>
       </li>
     </ul>
   </div>
