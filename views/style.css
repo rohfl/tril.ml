@@ -238,8 +238,11 @@ ul {
 
 .maindivapi {
   display: block;
-  padding: 2%;
-  font-size: 20px;
+  padding: 5px;
+  padding-left: 0;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  font-size: 1.5em;
   text-align: center;
 }
 
@@ -297,20 +300,6 @@ ul {
     padding: 0;
     padding-left: 3rem;
     padding-top: 2rem;
-  }
-
-  .maindivapi {
-    display: block;
-    padding: 2%;
-    font-size: 16px;
-    text-align: center;
-  }
-
-  .containerdiv {
-    text-align: left;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .notfound {
