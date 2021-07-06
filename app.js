@@ -66,8 +66,8 @@ app.get('/api/custom/:customurl',(req,res) => {
     var recurl = req.params.customurl
     var longurl = recurl.split('|')[0]
     var customurl = recurl.split('|')[1]
-    if(longurl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) != null) {
-        
+    if(longurl.match(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) != null) {
+        longurl = 'https://' + longurl
         apiFun(res,customurl,longurl)
     }
     else {
@@ -79,7 +79,9 @@ app.get('/api/:longurl',(req,res) => {
     
     var longurl = req.params.longurl
 
-    if(longurl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) != null) {
+    if(longurl.match(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) != null) {
+        
+        longurl = 'https://' + longurl
         
         customurl = nanoid(8)
         apiFun(res,customurl,longurl)
@@ -94,7 +96,9 @@ app.get('/:customurl', (req, res) => {
 
     db.ref().child("customurls").child(customurl).get().then((snapshot) => {
         if (snapshot.exists()) {
-            res.redirect(snapshot.val())
+            // console.log("FOUND")
+            const red = snapshot.val()
+            res.redirect(red)
         } else {
             res.redirect('/404')
         }
